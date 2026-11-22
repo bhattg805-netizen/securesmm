@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Primary SecureSMM Red Gradient -->
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3B3B" />
+      <stop offset="45%" stop-color="#FF1E2D" />
+      <stop offset="100%" stop-color="#A80014" />
+    </linearGradient>
+
+    <!-- Inner Shield Obsidian Contrast -->
+    <linearGradient id="shieldCore" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E1E1E" />
+      <stop offset="100%" stop-color="#0E0E0E" />
+    </linearGradient>
+
+    <!-- Golden Security Accent Gradient -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="50%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#EAB308" />
+    </linearGradient>
+
+    <!-- Crisp Metallic White Gradient -->
+    <linearGradient id="whiteShield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Circular Bold Red Base -->
+  <circle cx="256" cy="256" r="240" fill="url(#redGradient)" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="12" filter="url(#shadow)" />
+
+  <!-- Subtle Inner Ring Highlight -->
+  <circle cx="256" cy="256" r="218" fill="none" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="4" />
+
+  <!-- SecureSMM Iconic Shield + Stylized "S" Emblem -->
+  <g filter="url(#shadow)">
+    <!-- Outer White Security Shield -->
+    <path
+      d="M256 76 L402 126 V246 C402 338 339 406 256 436 C173 406 110 338 110 246 V126 Z"
+      fill="url(#shieldCore)"
+      stroke="url(#whiteShield)"
+      stroke-width="24"
+      stroke-linejoin="round"
+    />
+
+    <!-- Inner Red Rim Highlight inside Shield -->
+    <path
+      d="M256 102 L378 144 V244 C378 322 325 380 256 408 C187 380 134 322 134 244 V144 Z"
+      fill="none"
+      stroke="#FF3030"
+      stroke-opacity="0.65"
+      stroke-width="6"
+      stroke-linejoin="round"
+    />
+
+    <!-- Stylized Bold Geometric "S" Inside Shield -->
+    <path
+      d="M312 184 C312 158 286 146 256 146 C220 146 198 164 198 190 C198 220 226 232 258 242 C292 252 316 264 316 298 C316 328 288 348 254 348 C218 348 194 332 192 306"
+      fill="none"
+      stroke="url(#whiteShield)"
+      stroke-width="34"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Golden Security Core Highlight along "S" Center -->
+    <path
+      d="M214 218 C226 230 244 238 260 243 C276 248 294 256 304 270"
+      fill="none"
+      stroke="url(#goldGradient)"
+      stroke-width="14"
+      stroke-linecap="round"
+    />
+
+    <!-- Top Crest Verified Lock Dot -->
+    <circle cx="256" cy="104" r="14" fill="url(#goldGradient)" stroke="#101010" stroke-width="4" />
+
+    <!-- Bottom Shield Anchor Dot -->
+    <circle cx="256" cy="396" r="10" fill="#FF3030" />
+  </g>
+</svg>
