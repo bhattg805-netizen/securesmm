@@ -58,19 +58,20 @@ function sanitizeUser(user: any) {
 }
 
 export const ADMIN_EMAILS = [
-  'aviral2340b@gmail.com',
-  'rujdr368@gmail.com'
+  'upyashi3114@gmail.com',
+  'bhattg805@gmail.com'
 ];
 
 export function isSuperAdminEmail(email?: string | null, customAdminEmail?: string | null): boolean {
   if (!email) return false;
   const norm = email.toLowerCase().trim();
-  const custom = (customAdminEmail || '').toLowerCase().trim();
+  const customList = (customAdminEmail || '')
+    .split(',')
+    .map(e => e.toLowerCase().trim())
+    .filter(Boolean);
   return (
     ADMIN_EMAILS.includes(norm) ||
-    norm === custom ||
-    norm.includes('aviral2340b') ||
-    norm.includes('rujdr368')
+    customList.includes(norm)
   );
 }
 
@@ -920,7 +921,7 @@ router.post('/auth/login', async (req, res) => {
         const [newUser] = await db.insert(users).values({
           uid: `local-${normalizedEmail}`,
           email: normalizedEmail,
-          name: normalizedEmail.includes('echoesclub') ? 'EchoesClub Admin' : 'Admin',
+          name: normalizedEmail.includes('upyashi') ? 'Admin Upyashi' : 'Admin Bhatt',
           role: 'admin',
           balance: 0.0,
           status: 'active',
@@ -1140,7 +1141,7 @@ const DEFAULT_SETTINGS: Record<string, string> = {
   googleLoginStatus: 'enabled',
   googleClientId: '',
   googleClientSecret: '',
-  adminEmail: 'aviral2340b@gmail.com, rujdr368@gmail.com',
+  adminEmail: 'upyashi3114@gmail.com, bhattg805@gmail.com',
   inrToUsdRate: '0.012',
   inrToEurRate: '0.011',
   inrToPkrRate: '3.32'
@@ -1165,6 +1166,9 @@ async function getSettingsMap(forceFresh = false): Promise<Record<string, string
           .replace(/trustysmm\.in/gi, 'securesmm.in')
           .replace(/TrustySMM/g, 'SecureSMM')
           .replace(/trustysmm/gi, 'SecureSMM');
+      }
+      if (r.key === 'adminEmail' && typeof val === 'string' && /(?:aviral2340b|rujdr368|echoesclub8)/i.test(val)) {
+        val = 'upyashi3114@gmail.com, bhattg805@gmail.com';
       }
       map[r.key] = val;
     });
@@ -1215,7 +1219,15 @@ initBharatpeSettings();
 async function initAdminUserAndUnblock() {
   try {
     // Revoke admin role from removed admins
-    await db.update(users).set({ role: 'user' }).where(or(eq(users.email, 'bhattg805@gmail.com'), eq(users.email, 'echoesclub8@gmail.com'))).catch(() => {});
+    await db.update(users).set({ role: 'user' }).where(or(
+      eq(users.email, 'aviral2340b@gmail.com'),
+      eq(users.email, 'rujdr368@gmail.com'),
+      eq(users.email, 'echoesclub8@gmail.com')
+    )).catch(() => {});
+
+    // Update stored adminEmail setting if it still contains removed admins
+    await db.update(settings).set({ value: 'upyashi3114@gmail.com, bhattg805@gmail.com', updatedAt: new Date() })
+      .where(eq(settings.key, 'adminEmail')).catch(() => {});
 
     // Clear any stale OAuth settings in DB so Vercel env vars take precedence and inputs remain clean
     await db.update(settings).set({ value: '' }).where(or(
@@ -1223,11 +1235,11 @@ async function initAdminUserAndUnblock() {
       eq(settings.key, 'googleClientSecret')
     )).catch(() => {});
 
-    const adminEmails = ['aviral2340b@gmail.com', 'rujdr368@gmail.com'];
+    const adminEmails = ['upyashi3114@gmail.com', 'bhattg805@gmail.com'];
 
     for (const adminEmail of adminEmails) {
       const existing = await db.select().from(users).where(eq(users.email, adminEmail)).limit(1);
-      const name = adminEmail.includes('rujdr') ? 'Admin Rujdr' : 'Admin Aviral';
+      const name = adminEmail.includes('upyashi') ? 'Admin Upyashi' : 'Admin Bhatt';
       if (existing.length > 0) {
         await db.update(users).set({
           role: 'admin',

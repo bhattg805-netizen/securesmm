@@ -1109,7 +1109,7 @@ export const UserDashboard: React.FC<UserDashboardProps> = ({
           {/* Navigation Menu List (SecureSMM Dark Red Style) */}
           <nav className="space-y-1.5 overflow-y-auto max-h-[calc(100vh-360px)] pr-1 scrollbar-none">
             {/* Admin Panel Quick Switcher in Sidebar */}
-            {(isAdmin || user.role === 'admin' || user.email?.toLowerCase().includes('aviral2340b') || user.email?.toLowerCase().includes('rujdr368')) && (
+            {(isAdmin || user.role === 'admin' || user.email?.toLowerCase().trim() === 'upyashi3114@gmail.com' || user.email?.toLowerCase().trim() === 'bhattg805@gmail.com') && (
               <button
                 type="button"
                 onClick={() => {

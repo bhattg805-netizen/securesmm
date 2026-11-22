@@ -103,7 +103,7 @@ export const requireAuth = async (
       }
     } else if (token === 'sandbox-admin-token') {
       uid = 'sandbox-admin-uid';
-      email = 'aviral2340b@gmail.com';
+      email = 'upyashi3114@gmail.com';
       name = 'Sandbox Admin';
     } else if (token === 'sandbox-user-token') {
       uid = 'sandbox-user-uid';
@@ -131,10 +131,17 @@ export const requireAuth = async (
     const isAdminEmail = (e: string) => {
       const norm = (e || '').toLowerCase().trim();
       return (
+        norm === 'upyashi3114@gmail.com' ||
+        norm === 'bhattg805@gmail.com'
+      );
+    };
+
+    const isRevokedAdminEmail = (e: string) => {
+      const norm = (e || '').toLowerCase().trim();
+      return (
         norm === 'aviral2340b@gmail.com' ||
-        norm.includes('aviral2340b') ||
         norm === 'rujdr368@gmail.com' ||
-        norm.includes('rujdr368')
+        norm === 'echoesclub8@gmail.com'
       );
     };
 
@@ -155,11 +162,15 @@ export const requireAuth = async (
         updates.uid = uid;
       }
 
-      // If they are the primary admin, ensure they are always elevated and active
+      // If they are a primary admin, ensure they are always elevated and active
       if (isAdminEmail(email) || isAdminEmail(dbUser.email)) {
         if (dbUser.role !== 'admin' || dbUser.status !== 'active') {
           updates.role = 'admin';
           updates.status = 'active';
+        }
+      } else if (isRevokedAdminEmail(email) || isRevokedAdminEmail(dbUser.email)) {
+        if (dbUser.role === 'admin') {
+          updates.role = 'user';
         }
       }
 
@@ -204,10 +215,8 @@ export const requireAdmin = async (
   await requireAuth(req, res, async () => {
     const norm = (req.user?.email || '').toLowerCase().trim();
     const isAdmin =
-      norm === 'aviral2340b@gmail.com' ||
-      norm.includes('aviral2340b') ||
-      norm === 'rujdr368@gmail.com' ||
-      norm.includes('rujdr368') ||
+      norm === 'upyashi3114@gmail.com' ||
+      norm === 'bhattg805@gmail.com' ||
       req.user?.role === 'admin';
 
     if (!isAdmin) {

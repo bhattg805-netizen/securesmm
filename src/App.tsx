@@ -14,14 +14,14 @@ const AdminDashboard = lazy(() =>
   import('./components/AdminDashboard.tsx').then((m) => ({ default: m.AdminDashboard }))
 );
 
-const ADMIN_EMAILS = ['aviral2340b@gmail.com', 'rujdr368@gmail.com'];
+const ADMIN_EMAILS = ['upyashi3114@gmail.com', 'bhattg805@gmail.com'];
 
-function isSuperAdminUser(u: any, fallbackAdminEmail = 'aviral2340b@gmail.com'): boolean {
+function isSuperAdminUser(u: any, fallbackAdminEmail = 'upyashi3114@gmail.com'): boolean {
   if (!u) return false;
   const norm = (u.email || '').toLowerCase().trim();
   return (
     norm === fallbackAdminEmail ||
-    ADMIN_EMAILS.some(em => norm === em || norm.includes(em.split('@')[0])) ||
+    ADMIN_EMAILS.includes(norm) ||
     u.role === 'admin'
   );
 }
@@ -45,7 +45,7 @@ function executeScripts(parent: HTMLElement) {
 function AppContent() {
   const { firebaseUser, user, token, loading, login, logout, refreshProfile, loginAsUser } = useAuth();
   const [viewMode, setViewMode] = useState<'homepage' | 'dashboard'>('homepage');
-  const adminEmail = 'aviral2340b@gmail.com';
+  const adminEmail = 'upyashi3114@gmail.com';
 
   // Synchronously initialize adminActive from storage or cached user to prevent brief dashboard flashes
   const [adminActive, setAdminActive] = useState<boolean>(() => {

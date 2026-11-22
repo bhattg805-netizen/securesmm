@@ -846,10 +846,10 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       {/* 1. STATISTICS SECTION */}
       <LoginStatsSection
         stats={{
-          ordersDelivered: publicSettings?.statsOrdersDelivered || '25,000',
-          registeredUsers: publicSettings?.statsRegisteredUsers || '10,000',
-          activeServices: publicSettings?.statsActiveServices || '2,487',
-          ordersToday: publicSettings?.statsOrdersToday || '1,188',
+          ordersDelivered: publicSettings?.statsOrdersDelivered || '38,450',
+          registeredUsers: publicSettings?.statsRegisteredUsers || '14,820',
+          activeServices: publicSettings?.statsActiveServices || '2,840',
+          ordersToday: publicSettings?.statsOrdersToday || '1,642',
         }}
       />
 

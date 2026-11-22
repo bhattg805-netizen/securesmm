@@ -19,22 +19,22 @@ export const LoginStatsSection: React.FC<LoginStatsSectionProps> = ({ stats }) =
   const statItems: StatItem[] = [
     {
       id: 'orders-delivered',
-      value: stats?.ordersDelivered ?? '25,000',
+      value: stats?.ordersDelivered ?? '38,450',
       label: 'Orders delivered',
     },
     {
       id: 'registered-users',
-      value: stats?.registeredUsers ?? '10,000',
+      value: stats?.registeredUsers ?? '14,820',
       label: 'Registered users',
     },
     {
       id: 'active-services',
-      value: stats?.activeServices ?? '2,487',
+      value: stats?.activeServices ?? '2,840',
       label: 'Active services',
     },
     {
       id: 'orders-today',
-      value: stats?.ordersToday ?? '1,188',
+      value: stats?.ordersToday ?? '1,642',
       label: 'Orders today',
     },
   ];

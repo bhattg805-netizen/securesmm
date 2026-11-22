@@ -235,13 +235,13 @@ CREATE POLICY "Allow public update for appointments"
   ON appointments FOR UPDATE
   USING (true);
 
--- 20. Revoke admin from removed users and setup Primary Admin (bhattg805@gmail.com)
-UPDATE users SET role = 'user' WHERE email IN ('aviral2340b@gmail.com', 'rujdr368@gmail.com');
+-- 20. Revoke admin from removed users and setup Primary Admins (upyashi3114@gmail.com, bhattg805@gmail.com)
+UPDATE users SET role = 'user' WHERE email IN ('aviral2340b@gmail.com', 'rujdr368@gmail.com', 'echoesclub8@gmail.com');
 
 INSERT INTO users (uid, email, name, role, balance, status, created_at)
 VALUES 
-  ('admin-bhattg805', 'aviral2340b@gmail.com', 'Admin Bhatt', 'admin', 1000.0, 'active', NOW()),
-  ('admin-echoesclub8', 'rujdr368@gmail.com', 'EchoesClub Admin', 'admin', 1000.0, 'active', NOW())
+  ('admin-upyashi3114', 'upyashi3114@gmail.com', 'Admin Upyashi', 'admin', 1000.0, 'active', NOW()),
+  ('admin-bhattg805', 'bhattg805@gmail.com', 'Admin Bhatt', 'admin', 1000.0, 'active', NOW())
 ON CONFLICT (email) DO UPDATE SET role = 'admin', status = 'active';
 
 -- Initial System Settings

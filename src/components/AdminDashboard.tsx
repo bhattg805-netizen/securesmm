@@ -607,7 +607,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ token, onGoToUse
     googleLoginStatus: 'enabled',
     googleClientId: '',
     googleClientSecret: '',
-    adminEmail: 'aviral2340b@gmail.com, rujdr368@gmail.com'
+    adminEmail: 'upyashi3114@gmail.com, bhattg805@gmail.com'
   });
 
   const [adminPaymentMethodTab, setAdminPaymentMethodTab] = useState<'all_upi' | 'phonepe' | 'phonepe_bonus' | 'binance' | 'crypto' | 'paytm' | 'gpay' | 'manual_bank' | 'global_gateways'>('all_upi');
@@ -7659,7 +7659,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ token, onGoToUse
                     <label className="block text-xs font-bold text-gray-400 uppercase tracking-wide mb-2">Primary Administrator Email Address</label>
                     <input
                       type="email"
-                      placeholder="aviral2340b@gmail.com, rujdr368@gmail.com"
+                      placeholder="upyashi3114@gmail.com, bhattg805@gmail.com"
                       value={panelSettings.adminEmail || ''}
                       onChange={e => setPanelSettings({ ...panelSettings, adminEmail: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-[#0b101f] border border-white/10 text-white text-xs focus:outline-none focus:border-purple-500 transition-colors font-mono"

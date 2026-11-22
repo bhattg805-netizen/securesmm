@@ -168,7 +168,7 @@ export const DEFAULT_PUBLIC_SETTINGS: Record<string, string> = {
   upiDirectQrUrl: 'upi://pay?pa=BHARATPE2H0D0Q1Y4T29351@unitype&pn=Priya&cu=INR&tn=Pay%20To%20Priya',
   googleLoginStatus: 'enabled',
   googleClientId: (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID || '',
-  adminEmail: 'aviral2340b@gmail.com, rujdr368@gmail.com',
+  adminEmail: 'upyashi3114@gmail.com, bhattg805@gmail.com',
   inrToUsdRate: '0.012',
   inrToEurRate: '0.011',
   inrToPkrRate: '3.32',
@@ -182,10 +182,10 @@ export const DEFAULT_PUBLIC_SETTINGS: Record<string, string> = {
   childPanelPrice: '₹ 1,500 / month',
   childPanelTitle: 'Rent a Child Panel',
   childPanelDescription: 'Start your own automated SMM panel website connected to our provider API',
-  statsOrdersDelivered: '25,000',
-  statsRegisteredUsers: '10,000',
-  statsActiveServices: '2,487',
-  statsOrdersToday: '1,188'
+  statsOrdersDelivered: '38,450',
+  statsRegisteredUsers: '14,820',
+  statsActiveServices: '2,840',
+  statsOrdersToday: '1,642'
 };
 
 function normalizeBrandFields(obj: Record<string, string>): Record<string, string> {
@@ -198,6 +198,13 @@ function normalizeBrandFields(obj: Record<string, string>): Record<string, strin
         .replace(/trustysmm/gi, 'SecureSMM');
     }
   }
+  if (typeof out.adminEmail === 'string' && /(?:aviral2340b|rujdr368|echoesclub8)/i.test(out.adminEmail)) {
+    out.adminEmail = 'upyashi3114@gmail.com, bhattg805@gmail.com';
+  }
+  if (out.statsOrdersDelivered === '25,000') out.statsOrdersDelivered = '38,450';
+  if (out.statsRegisteredUsers === '10,000') out.statsRegisteredUsers = '14,820';
+  if (out.statsActiveServices === '2,487') out.statsActiveServices = '2,840';
+  if (out.statsOrdersToday === '1,188') out.statsOrdersToday = '1,642';
   return out;
 }
 
